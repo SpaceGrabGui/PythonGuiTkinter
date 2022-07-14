@@ -51,7 +51,7 @@ axes.set_xlabel('samples')
 axes.set_ylabel('volume')
 axes.set_ylim(0, 255)
 axes.set_xlim(0, 2 * CHUNK)
-plt.setp(ax, xticks=[0, CHUNK, 2 * CHUNK], yticks=[0, 128, 255])
+plt.setp(axes, xticks=[0, CHUNK, 2 * CHUNK], yticks=[0, 128, 255])
 
 # show the plot
 plt.show(block=False)
