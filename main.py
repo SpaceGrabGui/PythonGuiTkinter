@@ -425,7 +425,7 @@ if __name__ == '__main__':
     frame6.place(height=frameHeight, width=frameWidth, relx=0.67, rely=0.33)
     web6 = HtmlFrame(frame6, 500, 500)
     # try with tkwebviewFrame
-    web6.load_url("http://192.168.10.166/")
+    web6.load_url("https://www.compadre.org/osp/pwa/soundanalyzer/")
     web6.pack(fill="both", expand=True)
     frame7 = Frame(root, bg="#EEEEEE")
     # frame7.grid(row=2, column=0, sticky='nesw')
