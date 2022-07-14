@@ -1,19 +1,19 @@
 
 from cefpython3 import cefpython as cef
 from tkinter import *
-import os
-from tkinter import ttk
-from tkinter import messagebox
+#import os
+#from tkinter import ttk
+#from tkinter import messagebox
 import tkinter as tk
-import threading
-import multiprocessing
-import sys
+#import threading
+#import multiprocessing
+#import sys
 import time
-from time import sleep
-from datetime import datetime, timedelta
-from PIL import ImageTk, Image
+#from time import sleep
+#from datetime import datetime, timedelta
+#from PIL import ImageTk, Image
 import locale
-import subprocess
+#import subprocess
 import pyaudio
 import struct
 import numpy as np
@@ -24,8 +24,9 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk)
 locale.setlocale(locale.LC_ALL, '')
 
-from threading import Thread
-from tkinterweb import HtmlFrame #import the HTML browser
+#from threading import Thread
+#from tkinterweb import HtmlFrame #import the HTML browser
+
 
 # constants
 CHUNK = 1024                 # samples per frame
@@ -208,3 +209,4 @@ frame9.place(height=frameHeight, width=frameWidth, relx=0.67, rely=0.65)
 #################################################
 
 root.mainloop()
+
