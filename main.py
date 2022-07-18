@@ -87,6 +87,30 @@ frame3 = Frame(root)
 frame3 = LabelFrame(root, text="Audio Feed")
 frame3.place(height=frameHeight, width=frameWidth, relx=0.67, rely=0.01)
 
+frame4 = Frame(root, bg="grey")
+frame4 = LabelFrame(root, text="Mission Progress Status")
+frame4.place(height=frameHeight, width=frameWidth, relx=0.01, rely=0.33)
+
+frame5 = Frame(root, bg="grey")
+frame5 = LabelFrame(root, text="IR Camera Feed")
+frame5.place(height=frameHeight, width=frameWidth, relx=0.34, rely=0.33)
+    
+frame6 = Frame(root, bg="grey")
+frame6 = LabelFrame(root, text="Eqipment Images - Screen 1")
+frame6.place(height=frameHeight, width=frameWidth, relx=0.67, rely=0.33)
+    
+frame7 = Frame(root, bg="grey")
+frame7 = LabelFrame(root, text="Eqipment Images - Screen 1")
+frame7.place(height=frameHeight, width=frameWidth, relx=0.01, rely=0.65)
+
+frame8 = Frame(root, bg="grey")
+frame8 = LabelFrame(root, text="Eqipment Images - Screen 2")
+frame8.place(height=frameHeight, width=frameWidth, relx=0.34, rely=0.65)
+    
+frame9 = Frame(root, bg="grey")
+frame9 = LabelFrame(root, text="Eqipment Images - Screen 3")
+frame9.place(height=frameHeight, width=frameWidth, relx=0.67, rely=0.65)
+
 ########################################################################
 #                       PLOT AUDIO SPECTRUM                            #
 ########################################################################
@@ -173,32 +197,7 @@ while True:
         print('stream stopped')
         print('average frame rate = {:.0f} FPS'.format(frame_rate))
         break
-
-frame4 = Frame(root, bg="grey")
-frame4 = LabelFrame(root, text="Mission Progress Status")
-frame4.place(height=frameHeight, width=frameWidth, relx=0.01, rely=0.33)
-
-frame5 = Frame(root, bg="grey")
-frame5 = LabelFrame(root, text="IR Camera Feed")
-frame5.place(height=frameHeight, width=frameWidth, relx=0.34, rely=0.33)
-    
-frame6 = Frame(root, bg="grey")
-frame6 = LabelFrame(root, text="Eqipment Images - Screen 1")
-frame6.place(height=frameHeight, width=frameWidth, relx=0.67, rely=0.33)
-    
-frame7 = Frame(root, bg="grey")
-frame7 = LabelFrame(root, text="Eqipment Images - Screen 1")
-frame7.place(height=frameHeight, width=frameWidth, relx=0.01, rely=0.65)
-
-frame8 = Frame(root, bg="grey")
-frame8 = LabelFrame(root, text="Eqipment Images - Screen 2")
-frame8.place(height=frameHeight, width=frameWidth, relx=0.34, rely=0.65)
-    
-frame9 = Frame(root, bg="grey")
-frame9 = LabelFrame(root, text="Eqipment Images - Screen 3")
-frame9.place(height=frameHeight, width=frameWidth, relx=0.67, rely=0.65)
-        
-
+       
 #################################################
 #         FUNCTION AND BINDINGS                 #
 #################################################
