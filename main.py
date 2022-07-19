@@ -407,7 +407,7 @@ if __name__ == '__main__':
     web3 =HtmlFrame(frame3, 500, 500)
     # try with tkwebviewFrame
     "This is URL to call live camera feed"
-    web3.load_website('http://192.168.10.24:31102/h264.sdp.html')
+    web3.load_website('https://192.168.10.24:31102/h264.sdp.html')
     web3.pack(fill="both", expand=True)
 
     frame4 = Frame(root, bg="black")
