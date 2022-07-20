@@ -24,14 +24,14 @@ def SavePreferences(filename, createFile):
     configFile.read(filename)
     
     configFile["USERINFO"] = {
-        "username": "James Bond",
-        "loginid": "007",
-        "password": "bond007"
+        "username": "",
+        "user": "",
+        "password": ""
     }
     configFile["SERVERCONFIG"] = {
-        "host": "http://",
-        "port": "8080",
-        "ipaddr": "8.8.8.8"
+        "proto": "",
+        "port": "",
+        "ipaddr": ""
     }
     SaveConfigFile(filename, configFile)
 
@@ -45,7 +45,15 @@ def SaveConfigFile(filename, config):
 #Get the User Information
 def get_UserInfo(filename, config):
     config = ConfigParser.SafeConfigParser()
-    config.read("config.ini")
+    config.read(filename)
 
     userinfo = config["USERINFO"]
     return userinfo
+
+#Get the Server Information
+def get_ServerInfo(filename, config):
+    config = ConfigParser.SafeConfigParser()
+    config.read(filename)
+
+    serverinfo = config["SERVERCONFIG"]
+    return serverinfo

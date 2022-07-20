@@ -22,6 +22,7 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk)
 locale.setlocale(locale.LC_ALL, '')
 import subprocess
+from imutils.video import VideoStream
 
 inifile = "config.ini"
 
@@ -57,10 +58,11 @@ root.update()
 
 #Get the USER INFO
 userinfo = get_UserInfo(inifile, True)
+serverinfo = get_ServerInfo(inifile, True)
 
 frameHeight = (root.winfo_height() - 100) / 3
 frameWidth = (root.winfo_width()) / 3.1
-root.update()
+
 #frameHeight = (height - 390) / 3
 #frameWidth = (width - 400) / 3
 
@@ -91,7 +93,7 @@ helpmenu.add_command(label="About...")
 menubar.add_cascade(label="Help", menu=helpmenu)
 
 # Create the status bar on the bottom to show the X,Y coords (in respect to RAW image coords)
-status = Label(root, text="User : {}".format(userinfo["username"]), bd=1, relief=SUNKEN, anchor=W)
+status = Label(root, text="User : {}".format(userinfo["user"]), bd=1, relief=SUNKEN, anchor=W)
 status.pack(side=BOTTOM, fill=X)
 
 ########################################################################
@@ -149,16 +151,36 @@ frame5Lable = tk.Label(root)
 frame5Lable.place(height=frameHeight-25, width=frameWidth-10, relx=0.343, rely=0.35)
 
 print("Start Video Streaming")
-vs = cv2.VideoCapture(0)
-def video_stream():
+#vs = cv2.VideoCapture(0)
 
-    ok, frame = vs.read()
+#Get Username, Password and Server Info
+username = userinfo["username"]
+password = userinfo["password"]
+ip = serverinfo["ipaddr"]
+port = serverinfo["port"]
+proto = serverinfo["proto"]
+
+spotCamera = 'rtsp://'+username+':'+password+'@'+ip+':'+port+'/'
+print(spotCamera)
+
+videostream = cv2.VideoCapture(spotCamera, cv2.CAP_GSTREAMER)
+
+if not videostream.isOpened():
+    frame5Lable = Label(root, text="Cannot Connect to the Robot Camera", fg="red", font = ('Helvetica', 12, 'bold'))
+    frame5Lable.place(height=frameHeight-25, width=frameWidth-10, relx=0.343, rely=0.35)
+#    print('Cannot open RTSP stream')
+    videostream.release()
+
+def video_stream(): 
+#    vs = cv2.VideoCapture('rtsp://admin:pg7ggc385h84@192.168.10.24:31102/h264.sdp.html')
+    ok, frame = videostream.read()
     if ok:
         cv2image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         current_image = PIL.Image.fromarray(cv2image)  # convert image for PIL
         imgtk = PIL.ImageTk.PhotoImage(image=current_image)  # convert image for tkinter
         frame5Lable.imgtk = imgtk  # anchor imgtk so it does not be deleted by garbage-collector
         frame5Lable.config(image=imgtk)  # show the image
+
     root.after(20, video_stream)  # call the same function after 30 milliseconds
 
 #################################################
@@ -166,8 +188,7 @@ def video_stream():
 #################################################
 
 if __name__ == "__main__":
-
-   
+  
 
 #################################################
 #            MAIN LOOP                         #
